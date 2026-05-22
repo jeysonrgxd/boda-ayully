@@ -1,0 +1,170 @@
+/*
+Theme Name: ayllu
+Theme URI: https://jeysonrgxd.github.io/portafolio/
+Description: Template hecho desde cero
+Version: 1.0
+Author: Jeyson gino ramos garcia
+Author URI: https://jeysonrgxd.github.io/portafolio/
+*/
+
+* {
+   font-family: 'Montserrat', sans-serif;
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+}
+
+html {
+   scroll-behavior: smooth;
+   scroll-padding-top: 50px;
+}
+
+:root {
+/*    --primero: rgb(188, 122, 249); */
+   --primero: #a9d1b1;
+   --segundo: #fff;
+   --tercero: #F8FF95;
+   --cuarto: #A6FF96;
+   --texto: #3b3b3b;
+   --animate-delay: .3s;
+}
+
+/* ==========================================================================
+   HEADER / MENU FLOTANTE (AYLLU)
+   ========================================================================== */
+
+.aylluweb__header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    padding: 20px 0;
+    background-color: rgba(0, 0, 0, 0.2); /* Fondo sutil inicial */
+    transition: background-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Estado Sticky (.scroll) controlado por tu main.js */
+.aylluweb__header.scroll {
+    background-color: #ffffff; /* O el color de tu paleta clara */
+    padding: 12px 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.aylluweb__header-contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 9vw;
+}
+
+/* --- Control de Logos --- */
+.aylluweb__header-logo-img--scroll {
+    display: none;
+}
+
+.aylluweb__header.scroll .aylluweb__header-logo-img--normal {
+    display: none;
+}
+
+.aylluweb__header.scroll .aylluweb__header-logo-img--scroll {
+    display: block;
+}
+
+/* --- Menú Escritorio --- */
+.aylluweb__header-menu-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 30px;
+}
+
+.aylluweb__header-menu-list li a {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    text-transform: capitalize;
+    text-decoration: none;
+    color: #ffffff; /* Texto blanco inicial */
+    transition: color 0.3s ease;
+}
+
+/* Cambio de color de fuentes al hacer scroll */
+.aylluweb__header.scroll .aylluweb__header-menu-list li a {
+    color: #fff; 
+    font-size: 1.2em;
+}
+
+/* Hover y Página Activa (Naranja Ayllu de tu imagen) */
+.aylluweb__header-menu-list li a:hover,
+.aylluweb__header-menu-list li.current-menu-item a {
+    color: #F37923 !important; /* Reemplaza por tu variable CSS */
+    
+}
+
+/* --- Comportamiento Oculto del Checkbox --- */
+.aylluweb__header-checkbox {
+    display: none;
+}
+
+.aylluweb__header-hamburger {
+    display: none;
+    color: #ffffff;
+    font-size: 26px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.aylluweb__header.scroll .aylluweb__header-hamburger {
+    color: var(--color-base, #333333);
+}
+
+/* ==========================================================================
+   RESPONSIVE (Mobile-first Breakpoint)
+   ========================================================================== */
+
+@media (max-width: 767px) {
+    .aylluweb__header-hamburger {
+        display: block; /* Muestra el icono hamburguesa */
+    }
+
+    /* Menú lateral desplegable */
+    .aylluweb__header-nav {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Oculto por defecto */
+        width: 75%;
+        height: 100vh;
+        background-color: #ffffff;
+        box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease; /* Sigue tu estándar del translateX */
+        padding-top: 80px; 
+    }
+
+    /* Movimiento mediante animación/estado del checkbox */
+    .aylluweb__header-checkbox:checked ~ .aylluweb__header-nav {
+        right: 0;
+        transform: translateX(0);
+    }
+
+    .aylluweb__header-menu-list {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px 40px;
+        gap: 20px;
+    }
+
+    .aylluweb__header-menu-list li a {
+        color: #333333 !important; /* En móviles siempre oscuro ya que el fondo es blanco */
+        font-size: 18px;
+        width: 100%;
+        display: block;
+    }
+}
